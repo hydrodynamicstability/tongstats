@@ -5,3 +5,5 @@ title: "About this site's author"
 The author was an applied statistician for 24 years, primarily working in biostatistics (nonclinical, preclinical, and clinical) for both human and animal health. His primary statistical software is [R](https://www.r-project.org/). Some of his publications are compiled at [ORCID](https://orcid.org/0000-0003-0770-3270) and [Google Scholar](https://scholar.google.com/citations?user=TKoJwycAAAAJ&hl=en).
 
 You may contact the author by email; the address may be determined as follows. Spell the first and last name, with an underscore in between, in lower case. This is followed by an "at" symbol, and finally live dot com.
+
+This respository was launched on Nov. 3, 2026.
