@@ -1,0 +1,38 @@
+---
+title: "Twelve Reasons Not to Trust the Output of a Predictive Algorithm or Statistical Model"
+author: "Christopher Tong"
+---
+
+"Garbage in, garbage out" is an unhelpful truism unless we learn how to recognize various types of "garbage in". This list below has intentional redundancies, for emphasis, though I make no claim of completeness. It is divided into data issues and modeling issues, being the two principal types of inputs to a predictive modeling exercise. A prerequisite to the discussion is that a clear purpose for the exercise needs to be understood *a priori*.
+
+## Data issues
+
+1.  Your dataset was generated in a biased or misleading way (perhaps intentionally).
+
+2.  Your dataset contains errors and inconsistencies that have not been repaired.
+
+3.  Data from outside your sample are unlike data in your sample.
+
+4.  Data from the future are unlike data from the past.
+
+5.  Key data are missing due to informative reasons, not at random.
+
+6.  There are important predictor variables for which you don't have any data. (You may not even know that these variables exist!)
+
+## Modeling issues
+
+7.  Your data have structure that is ignored by the model/algorithm.
+
+8.  Your model/algorithm's assumptions have more influence on the output than the data used to fit it.
+
+9.  Your model/algorithm is overfitted to your training dataset and will fail to generalize.
+
+10. You made no attempt to validate the patterns you found by seeing if they reproduce in new datasets.
+
+11. Your reported uncertainty metrics fail to account for the uncertainty about whether you have an appropriate model/algorithm.
+
+12. Your model/algorithm provides a superb and predictive empirical "fit" to the data, but a qualitative interpretation of its form is misleading (eg, collinearity resulted in less insightful variables being included at the expense of more insightful ones, without harming predictive performance).
+
+### Provenance
+
+Originally published in the Summer-Fall 2020 issue of *Silver State-istics*, the newsletter of the Nevada Chapter of the American Statistical Association (ASA), vol. 17, no. 4, pp. 2-3.  Reprinted with permission, with the following disclaimer:  "All items appearing in *Silver-State-istics* are from the individuals providing them and are not intended in any way to represent positions or opinions of any employer, government agency, client, the Nevada Chapter of the ASA, or the national ASA."

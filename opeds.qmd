@@ -1,0 +1,56 @@
+---
+title: "Op-eds"
+author:  Christopher Tong
+---
+
+"Writing commentaries is some kind of a disease of the intellect."
+
+-- Richard P. Feynman, in his John Danz lectures at the University of Washington, Seattle (1963). *The Meaning of it All: Thoughts of a Citizen-Scientist* (Perseus Books, 1998).
+
+------------------------------------------------------------------------
+
+Here is a list of selected op-eds by me, pertaining to applied statistics, in chronological order.
+
+```{=html}
+<!-- ## 2003
+
+- [Further comments on the review times for statistics and physics journals](https://hydrodynamicstability.github.io/publicationlist/ims_bull_excerpt.pdf) (response to a letter by Larry Wasserman) -->
+```
+
+```{=html}
+<!-- ## 2012
+
+- [Response to H. A. David, “Euler’s contributions to mathematics useful in statistics”](https://doi.org/10.1080/00031305.2012.667900) -->
+```
+
+## 2015
+
+- [In Response to "Statistics as a Science, Not an Art: The Way to Survive in Data Science" by Mark van der Laan](https://magazine.amstat.org/blog/2015/05/01/sciencenotartii/) (Includes letters responding to van der Laan by Michael Lavine and me, with van der Laan's rejoinder)
+
+## 2020
+
+- [Twelve Reasons Not to Trust the Output of a Predictive Algorithm or Statistical Model](oped_twelvereasons.qmd)
+
+## 2021
+
+- [When Big Data is So Messy, You Never Get to Analyze It](oped_bigmessy.qmd)
+- [Floating Point Arithmetic and Data Science](oped_floatingpoint.qmd)
+
+## 2022
+
+- [Andrew Carnegie: Forerunner of Business Analytics (With Thoughts on What Statistics Was, What it Is, and What it Is Not)](https://hydrodynamicstability.github.io/AndrewCarnegie/)
+  - These are notes to accompany my presentation at the Nevada Statistics Seminar (3/25/2022), which is in turn based on a [paper](https://doi.org/10.1080/09332480.2021.2003633) I wrote for *Chance* magazine. I was also [interviewed](https://statsandstories.net/economics1/carnegie-the-statistician) about this on the *Stats+Stories* podcast that year.
+
+```{=html}
+<!-- ## 2024
+
+- [Danger! Systematic Error!](https://hydrodynamicstability.github.io/publicationlist/significanceSept2024_letter_screenshotALL.pdf) (Response to an article by Robert Matthews) -->
+```
+
+## 2025
+
+- [Reply to Gang (John) Xie, "A Practicing Statistician's Plea"](https://github.com/hydrodynamicstability/ReplyToXie)
+
+## 2026
+
+- [A Perspective on “The ASA President’s Task Force Statement on Statistical Significance and Replicability”](oped_asataskforce.qmd)

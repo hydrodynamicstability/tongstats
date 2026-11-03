@@ -1,0 +1,61 @@
+---
+title: "When Big Data is So Messy, You Never Get to Analyze It"
+author: "Christopher Tong"
+---
+
+The late biostatistician John C. Bailar once wrote, "My experience with data analysis indicates to me that problems
+with the data themselves are usually more numerous and more serious than problems with methodology." Indeed,
+when data problems are insurmountable, the most advanced analytics in the world may not get very far.
+Consider, for example, some observations by Arvind Krishna, currently CEO of IBM. (Incidentally, IBM's founder,
+Herman Hollerith, was a member of the American Statistical Association.) At the *Wall Street Journal*'s 2019
+"Future of Everything Festival", then IBM vice-president Krishna explained that "80% of the work with an artificial
+intelligence project is collecting and preparing data. Some companies aren't prepared for the cost and work
+associated with that going in." He continued "And so you run out of patience along the way, because you spend
+your first year just collecting and cleansing the data. And you say: 'Hey, wait a moment, where's the AI? I'm not
+getting the benefit.' And you kind of bail out." Naturally, he did not provide specific examples, but *WSJ* reporter
+Jared Council noted the cancellation of a major IBM Watson contract with MD Anderson Cancer Center in 2016,
+after the latter spent $62 million on the project. Eliza Strickland published an extensive post-mortem of that episode
+in *IEEE Spectrum*, noting that "At MD Anderson, researchers put Watson to work on leukemia patients’ health
+records—and quickly discovered how tough those records were to work with. Yes, Watson had phenomenal NLP
+[natural language processing] skills. But in these records, data might be missing, written down in an ambiguous way,
+or out of chronological order."
+
+What prompts me to write about this now is the termination (in February this year) of Haven Healthcare, a joint
+venture created in 2018 by Amazon, JPMorgan Chase, and Berkshire Hathaway. Their goal was to revolutionize
+employee healthcare delivery for these three major US companies. With the managerial talent, financial expertise,
+and technological firepower of the sponsoring CEOs Jeff Bezos, Jamie Dimon, and Warren Buffett and their
+organizations, what could go wrong? Plenty, it turns out. Sebastian Herrera and David Benoit of the *WSJ* have their
+own post-mortem of this "epic fail", but I want to focus on one particular aspect they describe. "Data was a central
+challenge. Haven struggled to aggregate and analyze information on health-care costs for the three companies'
+employees. Data concerns from the partners and resistance from insurers stymied Haven's efforts to determine how
+much the companies paid for medical care and why." They continue, "Initially, the leaders of the joint venture
+imagined that if they could see what the three companies were spending on health care and why, the data would
+show them what to fix. ... Getting a hold of those figures proved difficult." The software platform Haven
+developed to pull this data together was rejected by the sponsors, and had to be rebuilt, "further delaying the goal of
+understanding, analyzing and reducing costs." While this was not the only reason for Haven's termination, it seems
+likely that the joint venture experienced what IBM's Arvind Krishna was warning about.
+
+Riffing on R. A. Fisher's famous three problems of model specification, parameter estimation, and sampling
+distributions, Colin Mallows proposed the "Zeroth Problem": "Considering the relevance of the observed data, and
+other data that might be observed, to the substantive problem". I now propose a corollary to the Zeroth Problem: "If
+the available data are indeed relevant to the problem, how long will it take (and how costly will it be) to assemble,
+clean, and format the data into a structure amenable for analysis, if this is even possible?"
+
+### Sources
+
+John C. Bailar, III, "Bailar's Laws of Data Analysis". *Clinical Pharmacology and Therapeutics*, 20:  113-119 (1976).
+
+Jared Council, "Data Challenges Are Halting AI Projects, IBM Executive Says". *Wall Street Journal*, 28 May 2019.
+
+Sebastian Herrera and David Benoit, "Why the Amazon, JPMorgan, Berkshire Venture Collapsed: 'Health Care
+Was Too Big a Problem'." *Wall Street Journal*, 7 Jan 2021.
+
+Colin Mallows, "The Zeroth Problem". *The American Statistician*, 52:  1-9 (1998).
+
+Eliza Strickland, "IBM Watson, Heal Thyself". *IEEE Spectrum*, April 2019. Published online as "How IBM
+Watson Overpromised and Underdelivered on AI Health Care."
+
+
+### Provenance
+
+Originally published in the Winter-Spring 2021 issue of *Silver State-istics*, the newsletter of the Nevada Chapter of the American Statistical Association, vol. 18, no. 1, pp. 5.  Reprinted with permission, with the following disclaimer:  "All items appearing in *Silver-State-istics* are from the individuals providing them and are not intended in any way to represent positions or opinions of any employer, government agency, client, the Nevada Chapter of the ASA, or the national ASA."

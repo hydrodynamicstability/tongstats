@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Christopher Tong">
+
+<title>Floating Point Arithmetic and Data Science – tongstats</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-54fb6367b974031de9db0cb0fd9f7961.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">tongstats</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./principles.html"> 
+<span class="menu-text">Principles</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./methods.html"> 
+<span class="menu-text">Methods/Code</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reading-lists" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reading lists</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-reading-lists">    
+        <li>
+    <a class="dropdown-item" href="./recommendedreading.html">
+ <span class="dropdown-text">Recommended reading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./usgsbooks.html">
+ <span class="dropdown-text">Statistics books with USGS authors</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-commentaries" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Commentaries</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-commentaries">    
+        <li>
+    <a class="dropdown-item" href="./opeds.html">
+ <span class="dropdown-text">Op-eds</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./reviews.html">
+ <span class="dropdown-text">Reviews of books and papers</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-my-other-sites" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">My other sites</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-my-other-sites">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/hydrodynamicstability">
+ <span class="dropdown-text">My Github homepage</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://hydrodynamicstability.github.io/statquotes/">
+ <span class="dropdown-text">My favorite statistics quotes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://hydrodynamicstability.github.io/Perspectives-on-Applied-Statistics/">
+ <span class="dropdown-text">Perspectives on applied statistics</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#exercise-for-the-reader" id="toc-exercise-for-the-reader" class="nav-link active" data-scroll-target="#exercise-for-the-reader">Exercise for the reader</a>
+  <ul class="collapse">
+  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
+  <li><a href="#provenance" id="toc-provenance" class="nav-link" data-scroll-target="#provenance">Provenance</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Floating Point Arithmetic and Data Science</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Christopher Tong </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Many statisticians and data scientists take floating point arithmetic for granted. We program our computers to carry out calculations and accept the results at face value. We rarely worry about the nuances of binary representation of numbers and their conversion to decimal form. Our attitude resembles that of the great 19th century electrical engineer and applied mathematician, Oliver Heaviside, who asked “Shall I refuse my dinner because I do not fully understand the process of digestion?” Well, did you know that floating point arithmetic is not associative (Demmel &amp; Riedy, 2021)? Did you know that the oldest known trigonometric table, a 3700-year old clay tablet found in southern Iraq, is also allegedly the <em>most accurate</em> trig table known to exist? This is because Babylonian arithmetic is base-60, which can represent many fractions <em>exactly</em>, far more than in our base-10 system, in which many fractions must be approximated or rounded, like 1/3 = 0.33333…. (Mansfield &amp; Wildberger, 2017).</p>
+<p>Mishandling floating point numbers can result in catastrophic failure. Mathematician Douglas N. Arnold (1998) has documented the following two examples. The explosion of an unmanned Ariane 5 rocket in 1996 was traced to an overflow when a 64-bit floating point number was converted to a 16-bit signed integer. More tragically, 28 U.S. soldiers were killed in 1991 during the First Gulf War, when a Patriot missile in Saudi Arabia failed to intercept an Iraqi Scud missile. The error was traced to a loss of precision of time when tracking the Scud’s velocity, as represented in the system clock’s 24-bit register. Timing errors are particularly insidious. Faux and Godolphin (2021b) claim that rounding errors in quartz crystal stopwatches are theoretically capable of reversing the ranking of elite track or swimming athletes in a close race.</p>
+<p>What about statistical calculations? In a 2011 stackexchange post, user “whuber” stated that the smallest p-value that can be represented in IEEE 754 double precision arithmetic is <span class="math inline">\(10^{-303}\)</span>. [A p-value that small might be considered a bit meaningless, because such a value is way smaller than <span class="math inline">\(1/n\)</span>, where <span class="math inline">\(n\)</span> = the number of observable particles in the universe (<span class="math inline">\(10^{80}\)</span> ish).] More practically, versions of Microsoft Excel prior to 2003 had a notorious flaw when calculating the sample variance (and therefore standard deviation). As we all know, there are two convenient, mathematically equivalent ways of expressing the variance:</p>
+<p><span class="math display">\[ (n-1) Variance(x_i) = \sum_i (x_i - \bar{x})^2 = \sum_i x_i^2 - \frac{1}{n} (\sum_i x_i)^2 \]</span> As Hans Pottel (2000) noted however, in floating point arithmetic, the first form is more numerically stable than the second. He stated that the second formula “has the property that it suffers from subtractive cancellation for data sets for which the mean…is large compared to the standard deviation” and that an error analysis of the second formula shows that it has about twice “the number of incorrect significant figures in the results” compared to the first formula. However, the old versions of Excel used the unstable second form, while Excel 2003 and later use the more reasonable first form. Pottel (2000) shows that it is extremely easy to demonstrate the floating point error in old Excel. He gives an example of varying data that (old) Excel claimed had a precisely zero standard deviation. The solution is to manually subtract the mean from all data prior to applying the standard deviation function. (Subtracting a constant has no mathematical effect on the variance, but apparently it has a substantial effect in floating point calculations, the way old Excel coded it.) Earlier this year, Microsoft (2021) admitted that the variance algorithm had been changed for later versions of Excel. They also claimed that differences in outputs from the two algorithms are “likely to occur only in extreme situations.”</p>
+<p>A personal anecdote. My very first “statistical consulting” project involved analyzing accelerator mass spectrometry measurements of Calcium-41 isotope in a study of bone resorption in a group of post-menopausal women. The technology was capable of measuring extremely small concentrations of this isotope in urine. Theory predicted the form of the highly nonlinear function that such data (calcium-41 to calcium-40 ratios on the order of <span class="math inline">\(10^{-10}\)</span>) should follow over time (samples were collected over several weeks), but four fitting parameters had to be estimated empirically. I imported the data into SAS and tried to fit the model using the Levenberg-Marquardt algorithm. However, it would not converge. My statistics professor was baffled. However, I decided to “change the units of measurement”, ie, multiply all the <span class="math inline">\(y\)</span>’s by <span class="math inline">\(10^{10}\)</span> to make them of order unity. SAS was now able to converge and estimate the fitting parameters. (The estimated parameters could then be re-expressed in the original units if desired.) I bet the SAS implementation of the iterative algorithm checked for convergence by comparing the reduction in sum of squared error with a default tolerance value, and thus could not handle <span class="math inline">\(y\)</span>’s that may have been even smaller than that tolerance. The key was to not just think like a statistician, but think like a computer scientist too.</p>
+<p>Hough (2019) and Demmel &amp; Riedy (2021) provide some discussion about the latest (2019) revision of the IEEE 754 standard for floating point arithmetic. The standard was first issued in 1985. The 2008 revision included an interesting bug: the standard definitions of the Min and Max functions were not associative in the presence of “Not-a-numbers” (NaNs). The 2019 revision fixes this bug. Hough (2019) discusses the history of the IEEE 754 standard, while Demmel &amp; Riedy (2021) focuses on the 2019 update as well as providing several examples of “epic fails”. Faux &amp; Godolphin (2021a) provide further examples of floating point failures from physics, astronomy, and computational science. (After reading these examples, I am not convinced that the “extreme situations” Microsoft spoke of necessarily implies “uncommon situations”.)</p>
+<p>It is anticipated that future floating point standards will need to explicitly accommodate machine learning and related computational tasks. Hough (2019) observes that such tasks “obtain greater accuracy by processing more data faster than by computing with more precision – rather different constraints from those for traditional scientific computing. … There might be arithmetic standards dedicated to very specific application areas, rather than compromises intended to be suitable for a wide range of diverse applications.” Demmel &amp; Riedy (2021) note that machine learning applications “benefit from a wider exponent range to represent smaller probabilities, thus leading to formats like Google’s bfloat16 (with 7(+1) bits of precision, eight bits of exponent, and one sign bit).” I would applaud a more fit-for-purpose approach to floating point arithmetic standards, but this places the burden on us, as data scientists and statisticians, to specify how we want our floating point arithmetic to work. How many of us understand floating point arithmetic deeply enough to even begin to address that question!</p>
+<section id="exercise-for-the-reader" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-for-the-reader">Exercise for the reader</h2>
+<p>Try the following simple calculations in your favorite spreadsheet or statistical software. Let <span class="math inline">\(p\)</span> = 769933891 (a randomly selected 10-digit prime number), a constant, and let <span class="math inline">\(q = \{3, 5, 7\} \times 10^{-9}\)</span>. Let <span class="math inline">\(k = p + q\)</span>. Calculate the standard deviation of <span class="math inline">\(q\)</span> and then calculate the standard deviation of <span class="math inline">\(k\)</span>. Mathematically, these standard deviations should be identical, but in floating point arithmetic, you may get something quite different! I surmise that the title of a recent book by Hinch (2020) applies not only to fluid dynamics, but to statistics and data science, and any other field that involves computing.</p>
+<section id="sources" class="level3">
+<h3 class="anchored" data-anchor-id="sources">Sources</h3>
+<p>D. N. Arnold, 1998: <a href="https://www-users.cse.umn.edu/~arnold/disasters/">Some disasters attributable to bad numerical computing</a> .</p>
+<p>J. Demmel &amp; J. Riedy, 2021: <a href="https://www.siam.org/publications/siam-news/articles/a-new-ieee-754-standard-for-floating-point-arithmetic-in-an-ever-changing-world/">A new IEEE 754 Standard for floating-point arithmetic in an ever-changing world</a>. <em>SIAM News</em>, 54 (6): 9-11.</p>
+<p>D. A. Faux and J. Godolphin, 2021a: <a href="https://doi.org/10.1119/10.0003915">The floating point: tales of the unexpected</a>. <em>American Journal of Physics</em>, 89: 806-814.</p>
+<p>D. A. Faux and J. Godolphin, 2021b: <a href="https://doi.org/10.1119/10.0003919">The floating point: rounding error in timing devices</a>. <em>American Journal of Physics</em>, 89: 815-816.</p>
+<p>E. J. Hinch, 2020: <em>Think Before You Compute: A Prelude to Computational Fluid Dynamics</em>. Cambridge University Press.</p>
+<p>D. G. Hough, 2019: <a href="https://doi.org/10.1109/MC.2019.2926614">The IEEE Standard 754: one for the history books</a>. <em>Computer</em>, 52 (12): 109-112.</p>
+<p>D. F. Mansfield &amp; N. J. Wildberger, 2017: <a href="https://doi.org/10.1016/j.hm.2017.08.001">Plimpton 322 is Babylonian exact sexagesimal trigonometry</a>. <em>Historia Mathematica</em>, 44: 395-419.</p>
+<p>Microsoft, 2021: <a href="https://docs.microsoft.com/en-us/office/troubleshoot/excel/statistical-functions-differences">Differences between the Excel statistical functions STDEVPA and STDEVP</a>.</p>
+<p>H. Pottel, 2000: <a href="https://www.researchgate.net/publication/242587564_Statistical_flaws_in_Excel">Statistical flaws in Excel</a>.</p>
+<p>“whuber”, 2011: <a href="https://stats.stackexchange.com/questions/11812/sanity-check-how-low-can-a-p-value-go">Response to “Sanity check: how low can a p-value go?”</a>.</p>
+</section>
+<section id="provenance" class="level3">
+<h3 class="anchored" data-anchor-id="provenance">Provenance</h3>
+<p>Originally published in the Fall 2021 issue of <em>Silver State-istics</em>, the newsletter of the Nevada Chapter of the American Statistical Association, vol.&nbsp;18, no. 3, pp.&nbsp;5-7. Reprinted with permission, with the following disclaimer: “All items appearing in <em>Silver-State-istics</em> are from the individuals providing them and are not intended in any way to represent positions or opinions of any employer, government agency, client, the Nevada Chapter of the ASA, or the national ASA.”</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright 2026 by Christopher Tong. All rights reserved. Permission to use this content for AI training is DENIED. The views expressed here are mine alone, and do not necessarily reflect the policies, views, or opinions of my employer or any organization with which I am affiliated.</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

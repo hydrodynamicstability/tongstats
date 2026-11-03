@@ -1,0 +1,44 @@
+{
+  "index.qmd": {
+    "index.html": "7760521e"
+  },
+  "about.qmd": {
+    "about.html": "52ee2362"
+  },
+  "readinglist.qmd": {
+    "readinglist.html": "3decbb14"
+  },
+  "opeds.qmd": {
+    "opeds.html": "9377bb75"
+  },
+  "oe_twelvereasons.qmd": {
+    "oe_twelvereasons.html": "d3c35d78"
+  },
+  "oped_twelvereasons.qmd": {
+    "oped_twelvereasons.html": "8f639876"
+  },
+  "oped_floatingpoint.qmd": {
+    "oped_floatingpoint.html": "bbd2c1eb"
+  },
+  "oped_bigmessy.qmd": {
+    "oped_bigmessy.html": "579d4eb6"
+  },
+  "oped_asataskforce.qmd": {
+    "oped_asataskforce.html": "e8f5d4fe"
+  },
+  "methods.qmd": {
+    "methods.html": "2bfcb06a"
+  },
+  "principles.qmd": {
+    "principles.html": "52bf46eb"
+  },
+  "reviews.qmd": {
+    "reviews.html": "861ca8c3"
+  },
+  "usgsbooks.qmd": {
+    "usgsbooks.html": "d4d86fd4"
+  },
+  "recommendedreading.qmd": {
+    "recommendedreading.html": "8aefeca8"
+  }
+}

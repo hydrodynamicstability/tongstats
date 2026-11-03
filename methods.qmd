@@ -1,0 +1,18 @@
+---
+title: "Statistical methods and code"
+author: "Christopher Tong"
+---
+
+Here is a list of hyperlinks to my Github repositories in relation to selected statistical methods and R code that I have developed, usually in collaboration with others.
+
+- [Simple Linear Regression When Both Variables are Random](https://github.com/hydrodynamicstability/SLR.when.both.variables.random)
+  - Includes code for geometric mean regression, orthogonal distance regression, computing the eigenvalues of the sample covariance matrix, the sample Coleman correlation, and related quantities.
+  - Dr. Shubing Wang contributed to the first of two conference papers associated with this work.
+- [Boxdot Plot](https://github.com/hydrodynamicstability/boxdot.plot)
+  - This is a variation of Tukey's box-and-whisker plot, and Parzen's quantile boxplot. It was first introduced to me by Dr. Dan Holder. The R code linked here is based on S code written by Dr. David Shera.
+- [Mean Kinetic Temperature for Unequally Spaced Data](https://github.com/hydrodynamicstability/meankinetictemperature)
+  - Dr. Amy Lock contributed to the conference paper associated with this work.
+- [Choosing an estimate of initial activity level for multiple radioactive sources](https://github.com/hydrodynamicstability/combinatorialmedian)
+  - This is an unpublished manuscript on brachytherapy source activity estimation, co-authored with Drs. Alex Cardenas and Rich Raubertas. It introduces the combinatorial median; code is found embedded within the manuscript.
+
+Finally, see also the dev site for the [Animal Biologics Statisticians](<https://abs-dev.github.io/index.html>).

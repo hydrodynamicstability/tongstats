@@ -1,0 +1,71 @@
+---
+title: "Statistics books with USGS authors"
+author: "C. Tong"
+---
+
+
+I have attempted to compile a list of statistics-related books with at least one USGS-affiliated author, that I am aware of.  The USGS author's name is indicated in **bold**.  I have listed only the most recent edition I know about.  Please let me know of any omissions.
+
+## Statistical methods in minerology
+
+**Donald. A. Singer** and **W. David Menzie**, 2010:  [*Quantitative Mineral Resource Assessments:  An Integrated Approach*](https://doi.org/10.1093/oso/9780195399592.001.0001).  Oxford University Press.
+
+## Statistical methods in hydrology
+
+**Dennis R. Helsel**, **Robert M. Hirsch**, **Karen R. Ryberg**, **Stacey A. Archfield**, and **Edward J. Gilroy**, 2020:  [*Statistical Methods in Water Resources*](https://doi.org/10.3133/tm4A3), third edition.  *Techniques and Methods* 4-A3.  (Book 4, *Hydrologic Analysis and Interpretation*, Section A, *Statistical Analysis*, Chapter 3.)  Reston, VA:  U.S. Geological Survey.
+
+
+## Ecological statistics
+
+**Steven C. Amstrup**, Trent L. McDonald, and Brian F. J. Manly (eds.), 2005:  [*Handbook of Capture-Recapture Analysis*](https://press.princeton.edu/books/paperback/9780691089683/handbook-of-capture-recapture-analysis). Princeton University Press.
+
+**Melvin B. Hooten**, Devin S. Johnson, Brett T. McClintock, and Juan M. Morales, 2017:  [*Animal Movement:  Statistical Models for Telemetry Data*](https://doi.org/10.1201/9781315117744).  Chapman & Hall/CRC Press.
+
+Marc Kéry and **J. Andrew Royle**, 2016:  [*Applied Hierarchical Modeling in Ecology:  Analysis of Distribution, Abundance and Species Richness in R and BUGS, volume 1:  Prelude and Static Models*](https://shop.elsevier.com/books/applied-hierarchical-modeling-in-ecology-analysis-of-distribution-abundance-and-species-richness-in-r-and-bugs/kery/978-0-12-801378-6).  Academic Press.
+
+Marc Kéry and **J. Andrew Royle**, 2021:  [*Applied Hierarchical Modeling in Ecology:  Analysis of Distribution, Abundance and Species Richness in R and BUGS, volume 2:  Dynamic and Advanced Models*](https://doi.org/10.1016/C2015-0-04070-9).  Academic Press.
+
+Daryl I. MacKenzie, James D. Nichols, **J. Andrew Royle**, Kenneth H. Pollock, Larissa L. Bailey, and **James E. Hines**, 2017:  [*Occupancy Estimation and Modeling:  Inferring Patterns and Dynamics of Species Occurrence*](https://doi.org/10.1016/C2012-0-01164-7), second edition.  Academic Press.
+    
+**J. Andrew Royle** and Robert M. Dorazio, 2008:  [*Hierarchical Modeling and Inference in Ecology:  The Analysis of Data from Populations, Metapopulations and Communities*](https://doi.org/10.1016/B978-0-12-374097-7.X0001-4).  Academic Press.
+    
+**J. Andrew Royle**, Richard B. Chandler, Rahel Sollmann, and Beth Gardner, 2014:  [*Spatial Capture-Recapture*](https://doi.org/10.1016/C2012-0-01222-7).  Academic Press.
+    
+**Byron K. Williams**, **James D. Nichols**, and Michael J. Conroy, 2002:  [*Analysis and Management of Animal Populations:  Modeling, Estimation, and Decision Making*](https://shop.elsevier.com/books/analysis-and-management-of-animal-populations/williams/978-0-12-754406-9).  Academic Press.
+    
+## Censored data
+
+**Dennis R. Helsel**, 2012:  [*Statistics for Censored Environmental Data Using Minitab and R*](https://doi.org/10.1002/9781118162729), second edition.  Hoboken, NJ:  Wiley.
+
+  - The first edition was titled *Nondetects and Data Analysis:  Statistics for Censored Environmental Data* (Wiley, 2005).
+  
+## Model selection
+
+**Kenneth P. Burnham** and **David R. Anderson**, 2002:  [*Model Selection and Multimodel Inference:  A Practical Information-Theoretic Approach*](https://doi.org/10.1007/b97636), second edition.  Springer.
+
+## Structural equation models
+
+**James B. Grace**, 2006:  [*Structural Equation Modeling and Natural Systems*](https://doi.org/10.1017/CBO9780511617799).  Cambridge University Press.
+
+**Bruce H. Pugesek**, Adrian Tomer, and Alexander von Eye (eds.), 2003:  [*Structural Equation Modeling:  Applications in Ecological and Evolutionary Biology*](https://doi.org/10.1017/CBO9780511542138).  Cambridge University Press.
+
+
+
+## Bayesian statistics
+
+**Therese M. Donovan** and Ruth M. Mickey, 2019:  [*Bayesian Statistics for Beginners:  A Step-by-Step Approach*](https://doi.org/10.1093/oso/9780198841296.001.0001).  Oxford University Press.
+
+N. Thompson Hobbs and **Melvin B. Hooten**, 2025:  [*Bayesian Models:  A Statistical Primer for Ecologists*](https://press.princeton.edu/books/hardcover/9780691250120/bayesian-models), second edition.  Princeton University Press.
+
+**Melvin B. Hooten** and Trevor Hefley, 2019:  [*Bringing Bayesian Models to Life*](https://www.routledge.com/Bringing-Bayesian-Models-to-Life/Hooten-Hefley/p/book/9781032092416).  Chapman & Hall/CRC Press.
+    
+**William A. Link** and Richard J. Barber, 2009:  [*Bayesian Inference with Ecological Applications*](http://doi.org/10.1016/C2009-0-01674-2).  Academic Press.
+    
+Song S. Qian, **Mark R. DuFour**, and Ibrahim Alameddine, 2022:  [*Bayesian Applications in Environmental and Ecological Studies with R and Stan*](https://doi.org/10.1201/9781351018784).  Chapman & Hall/CRC Press.
+    
+## Sports analytics
+
+Eric A. Eager and **Richard A. Erickson**, 2023:  [*Football Analytics with Python and R:  Learning Data Science Through the Lens of Sports*](https://www.oreilly.com/library/view/football-analytics-with/9781492099611/).  O'Reilly.
+
+- Published in the author's personal capacity.
+

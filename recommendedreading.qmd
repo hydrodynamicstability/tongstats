@@ -1,0 +1,191 @@
+---
+title: "Tong's Recommended Reading"
+---
+
+Here is a list of recommended reading for all data professionals, organized by topic. 
+
+
+
+
+## General scientific and statistical literacy
+
+
+G. E. P. Box, 1976:  [Science and statistics](https://doi.org/10.1080/01621459.1976.10480949).  *Journal of the American Statistical Association*, 71:  791-799.
+
+G. E. P. Box, 2001:  [Statistics for discovery](https://doi.org/10.1080/02664760120034036).  *Journal of Applied Statistics*, 28:  285-299.
+
+R. P. Feynman, 1967:  *The Character of Physical Law*.  MIT Press.
+
+R. P. Feynman, 1998: *The Meaning of it All:  Thoughts of a Citizen-Scientist*.  Perseus Books.
+
+John Kay and Mervyn King, 2020:  *Radical Uncertainty: Decision-Making Beyond the Numbers* (New York: W. W. Norton).
+
+C. Krumme, 2017:  [Babylonian lottery](https://www.edge.org/response-detail/27102).  *Edge*.
+
+
+G. J. Lithgow, M. Driscoll, and P. Phillips, 2017:  [A long journey to reproducible results](https://doi.org/10.1038/548387a).  *Nature*, 548:  387-388.
+
+J. J. Locascio, 2019:  [The impact of results blind scientific publishing on statistical consultation and collaboration](https://doi.org/10.1080/00031305.2018.1505658).  *The American Statistician*, 73 (sup1):  346-351.
+
+
+C. Mallows, 1998:  [The zeroth problem](https://doi.org/10.1080/00031305.1998.10480528).  *The American Statistician*, 52:  1-9.
+
+
+N. Oreskes, K. Shrader-Frechette, and K. Belitz, 1994:  [Verification, validation, and confirmation of numerical models in the earth sciences](https://doi.org/10.1126/science.263.5147.641).  *Science*, 263:  641-646.
+
+H. Quinn, 2009:  [What is science?](https://doi.org/10.1063/1.3177240)  *Physics Today*, 62 (7):  8-9.
+
+
+M. Schrage, 2000: How the bell curve cheats you. *Fortune*, 21 February 2000, p. 296.
+
+
+L. Shepp, 2007:  [Statistical thinking:  From Tukey to Vardi and beyond](https://doi.org/10.1214/074921707000000210).   In *Complex Datasets and Inverse Problems:  Tomography, Networks and Beyond*, ed. by R. Liu, W. Strawderman, and C.-H. Zhang.    IMS Lecture Notes-Monograph Series, 54:  268-273.
+
+
+E. L. Thompson and L. A. Smith, 2019:  [Escape from model-land](https://doi.org/10.5018/economics-ejournal.ja.2019-40).  *Economics*, 13:  2019-40.
+
+J. W. Tukey, 1969:  [Analyzing data:  sanctification or detective work?](https://psycnet.apa.org/doi/10.1037/h0027108)  *American Psychologist*, 24:  83-91.
+
+
+
+## Exploratory and confirmatory
+
+P. Diaconis, 1985:  [Theories of data analysis:  From magical thinking through classical statistics](https://doi.org/10.1002/9781118150702.ch1).  In *Exploring Data Tables, Trends, and Shapes*, ed. by D. C. Hoaglin, F. Mosteller, and J. W. Tukey (New York:  Wiley), 1-36.
+
+J. S. Mogil and M. R. Macleod, 2017:  [No publication without confirmation](https://doi.org/10.1038/542409a).  *Nature*, 542:  409-411.
+
+J. W. Tukey, 1980:  [We need both exploratory and confirmatory]( https://doi.org/10.1080/00031305.1980.10482706).  *American Statistician*, 34:  23-25.
+
+
+## Probability
+
+W. E. Deming, 1975:  [On probability as a basis for action](https://doi.org/10.1080/00031305.1975.10477402).  *The American Statistician*, 29:  146-152.
+
+W. Feller, 1970:  Introduction.  *An Introduction to Probability Theory and Its Applications*, revised third edition (New York:  Wiley), Chapter 1 (pp. 1-6).
+
+## Statistical inference
+
+V. Amrhein, D. Trafimow, and S. Greenland, 2019:  [Inferential statistics as descriptive statistics:  there is no replication crisis if we don’t expect replication](https://doi.org/10.1080/00031305.2018.1543137).  *The American Statistician*, 73 (sup1):  262-270.
+
+J. O. Berger and D. A. Berry, 1988:  [Statistical analysis and the illusion of objectivity](https://www.jstor.org/stable/27855070).  *American Scientist*, 76:  159-165.
+
+G. Gigerenzer and J. Marewski, 2015:  [Surrogate science:  The idol of a universal method for scientific inference](https://doi.org/10.1177/0149206314547522).  *Journal of Management*, 41:  421-440.
+
+S. Greenland, 2025:  [Statistical methods:  basic concepts, interpretations, and cautions](https://doi.org/10.1007/978-1-4614-6625-3_54-1).  *Handbook of Epidemiology*, ed. by W. Ahrens and I. Pigeot (New York:  Springer).  [ArXiv version](https://arxiv.org/abs/2508.10168).
+
+B. Gunter and C. Tong, 2017:  [What are the odds!?  The "airport fallacy" and statistical inference](https://doi.org/10.1111/j.1740-9713.2017.01057.x).  *Significance*, 14 (4):  38-41.
+
+J. R. Hollenbeck and P. M. Wright, 2016:  [Harking, sharking, and tharking:  Making the case for post hoc analysis of scientific data](https://doi.org/10.1177/0149206316679487).  *Journal of Management*, 43:  5-18.
+
+
+R. L. Wasserstein and N. A. Lazar, 2016:  [The ASA's statement on p-values:  context, process, and purpose](https://doi.org/10.1080/00031305.2016.1154108).  *The American Statistician*, 70:  129-133.
+
+
+## Design of experiments
+
+R. A. Fisher, 1926:  The arrangement of field experiments.   *Journal of the Ministry of Agriculture of Great Britain*, 33:  503-513.
+
+International Conference on Harmonisation of Technical Requirements for Pharmaceuticals for Human Use, 2022:  [*E8(R1) General Considerations for Clinical Studies*](https://database.ich.org/sites/default/files/E8-R1_Guideline_Step4_2021_1006.pdf).  
+
+## Observational data
+
+A. Bradford Hill, 1965:  [The environment and disease:  association or causation?](https://doi.org/10.1177/003591576505800503)  *Proceedings of the Royal Society of Medicine*, 58 (5):  295-300.
+
+
+D. A. Freedman, 1999:  [From association to causation:  some remarks on the history of statistics](http://www.jstor.org/stable/2676760).  *Statistical Science*, 14:  243-258.
+
+## Model uncertainty and the garden of forking paths
+
+C. Chatfield, 1995:  [Model uncertainty, data mining and statistical inference (with discussion)](https://doi.org/10.2307/2983440).  *Journal of the Royal Statistical Society*, Series A, 158:  419-466.
+
+
+A. Gelman and E. Loken, 2014:  [The statistical crisis in science](https://www.jstor.org/stable/43707868).  *American Scientist*, 102:  460-465.
+
+J. P. Simmons, L. D. Nelson, and U. Simonsohn, 2011:  [False-positive psychology:  undisclosed flexibility in data collection and analysis allows presenting anything as significant](https://doi.org/10.1177/0956797611417632).  *Psychological Science*, 22:  1359-1366.
+
+## Many sets of data; many lines of evidence
+
+C. Cotton, 2026:  [Rigor is not readiness:  the PERL framework for evidence-based policy](https://doi.org/10.1126/science.aef3529).  *Science*, 393 (6810):  463-465.
+
+A. S. C. Ehrenberg, 1990:  [A hope for the future of statistics:  MSOD](https://doi.org/10.1080/00031305.1990.10475717).  *The American Statistician*, 44:  195-196.
+
+A. S. C. Ehrenberg and J. A. Bound, 1993:  [Predictability and prediction (with discussion)](https://doi.org/10.2307/2982727).  *Journal of the Royal Statistical Society*, Series A, 156:  167-206.
+
+
+M. R. Munafo and G. Davey Smith, 2018:  [Robust research needs many lines of evidence](https://doi.org/10.1038/d41586-018-01023-3).  *Nature*, 553:  399-401.
+
+## Interpretation of statistical results
+
+D. G. Altman and J. M. Bland, 1995: [Absence of evidence is not evidence of absence](https://doi.org/10.1136/bmj.311.7003.485). *British Medical Journal*, 311: 485.
+
+
+S. Greenland, 2017:  [The need for cognitive science in methodology](https://doi.org/10.1093/aje/kwx259).  *American Journal of Epidemiology*, 186:  639-645.
+
+
+M. Lavine, 2019:  [Frequentist, Bayes, or other?](https://doi.org/10.1080/00031305.2018.1459317)  *The American Statistican*, 73 (sup1):  312-318.
+
+B. B. McShane, D. Gal, A. Gelman, C. Robert, and J. L. Tackett, 2019:  [Abandon statistical significance](https://doi.org/10.1080/00031305.2018.1527253).  *The American Statistician*, 73 (sup1):  235-245.
+
+
+## Simulation and random numbers
+
+
+B. Hayes, 2001: [Randomness as a resource](https://www.jstor.org/stable/27857495). *American Scientist*, 89: 300-304.
+
+T. Speed, 2012:  Does it work in practice?  *IMS Bulletin*, 41 (8):  9.
+
+## Statistics and machine learning, data mining, and data science
+
+L. Breiman, 2001:  [Statistical modeling:  The two cultures (with discussion)](https://doi.org/10.1214/ss/1009213726).  *Statistical Science*, 16:  199-231.
+
+D. Donoho, 2017:  [50 years of data science](https://doi.org/10.1080/10618600.2017.1384734) (with discussion, not linked here).  *Journal of Computational and Graphical Statistics*, 26:  745-785.
+
+
+J. H. Friedman, 2001: [The role of statistics in the data revolution?](https://doi.org/10.1111/j.1751-5823.2001.tb00474.x) *International Statistical Review*, 69: 5-10.
+
+## Statistical consulting
+
+D. R. Cox, 1999:  [Some general remarks on consulting](https://ssc.ca/en/some-general-remarks-consulting).  *Liaison*, 13 (1).
+
+
+
+S. Evans, 2026:  [Statistics is a journey, not a destination](https://stattrak.amstat.org/2026/03/02/clinicaltrialadvice/).  *Amstat News*, issue 585 (March, 2026), pp. 35-36.  (Or see earlier [version](https://asabiopreport.substack.com/p/advice-for-statisticians-in-clinical) published in the *Biopharmaceutical Report* in 2025).
+
+R. W. Hamming, 1973:  The art of computing for scientists and engineers.  *Numerical Methods for Scientists and Engineers*, second edition (New York:  McGraw-Hill; reprinted by Dover in 1986), Chapter "N+1" (pp. 702-710).
+
+R. Nisbet, J. Elder, and G. Miner, 2009:  [Top 10 data mining mistakes](https://www.elderresearch.com/wp-content/uploads/2020/10/Elder-Research_eBook_Top-10-Data-Mining-Mistakes.pdf).  *Handbook of Statistical Analysis and Data Mining Applications*, first edition.  Academic Press, Chapter 20 (pp. 733-754).
+
+## Statistics in preclinical research
+
+J. Couzin-Frankel, 2013:  [When mice mislead](https://doi.org/10.1126/science.342.6161.922).  *Science*, 342:  922-925.
+
+S. Landis, et al., 2012:  [A call for transparent reporting to optimize the predictive value of preclinical research](https://doi.org/10.1038/nature11556).  *Nature*, 490:  187-191.
+
+P. S. Reynolds, 2022:  [Between two stools: preclinical research, reproducibility, and statistical design of experiments](https://doi.org/10.1186/s13104-022-05965-w).  *BMC Research Notes*, 15:  73.
+
+## Statistics in experimental physics
+
+E. Cartlidge, 2021:  [Solving the proton puzzle](https://physicsworld.com/a/solving-the-proton-puzzle/).  *Physics World*, June 2021 issue.
+
+M. Jeng, 2006:  [A selected history of expectation bias in physics](https://doi.org/10.1119/1.2186333).  *American Journal of Physics*, 74:  578-583,
+
+D. Kleppner, 1992:  [Fretting about statistics](https://doi.org/10.1063/1.2809718).  *Physics Today*, vol. 45, no. 7 (July 1992), pp. 9-11.
+
+R. Matthews, 2024:  [The OPERA experiment versus Einstein](https://doi.org/10.1093/jrssig/qmae047).  *Significance*, July 2024, pp. 42-43.
+
+C. Seife, 2000:  [CERN’s gamble shows perils, rewards of playing the odds](https://doi.org/10.1126/science.289.5488.2260).  *Science*, 289:  2260-2262.
+
+W. J. Youden, 1961:  [Systematic errors in physical constants](https://doi.org/10.1063/1.3057731).  *Physics Today*, 14 (9):  32-43.
+
+W. J. Youden, 1972:  [Enduring values](https://doi.org/10.1080/00401706.1972.10488878).  *Technometrics*, 14 (1):  1-11.
+
+
+
+
+## Some helpful online resources
+
+- American Statistical Association, [Ethical Guidelines for Statistical Practice](https://www.amstat.org/your-career/ethical-guidelines-for-statistical-practice)
+- American Statistical Association, [What to Expect When You Consult a Statistician](https://community.amstat.org/cnsl/forclients/expect-content)
+- *Nature* Portfolio collection on [Statistics for Biologists](https://www.nature.com/collections/qghhqm)
+- [PHYSTAT](https://phystat.github.io/Website/), an event series for statistical methods in high energy physics
+- [NIST/Sematech e-Handbook of Statistical Methods](https://www.itl.nist.gov/div898/handbook/)

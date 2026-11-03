@@ -1,0 +1,15 @@
+---
+title: "Reviews of books and papers"
+author: "Christopher Tong"
+---
+
+
+Reviews and commentaries on books and papers in statistics, written by me.
+
+## Book reviews
+
+- [Methods of Multivariate Analysis, second edition, by Alvin C. Rencher.](https://doi.org/10.1080/07408170500232784)
+
+## Commentaries on papers relevant to applied statistics
+
+Forthcoming....

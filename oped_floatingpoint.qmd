@@ -1,0 +1,116 @@
+---
+title: "Floating Point Arithmetic and Data Science"
+author: "Christopher Tong"
+---
+
+Many statisticians and data scientists take floating point arithmetic for granted. We program our computers to carry
+out calculations and accept the results at face value. We rarely worry about the nuances of binary representation of
+numbers and their conversion to decimal form. Our attitude resembles that of the great 19th century electrical
+engineer and applied mathematician, Oliver Heaviside, who asked "Shall I refuse my dinner because I do not fully
+understand the process of digestion?" Well, did you know that floating point arithmetic is not associative (Demmel
+& Riedy, 2021)? Did you know that the oldest known trigonometric table, a 3700-year old clay tablet found in
+southern Iraq, is also allegedly the *most accurate* trig table known to exist? This is because Babylonian arithmetic is
+base-60, which can represent many fractions *exactly*, far more than in our base-10 system, in which many fractions
+must be approximated or rounded, like 1/3 = 0.33333.... (Mansfield & Wildberger, 2017).
+
+Mishandling floating point numbers can result in catastrophic failure. Mathematician Douglas N. Arnold (1998) has
+documented the following two examples. The explosion of an unmanned Ariane 5 rocket in 1996 was traced to an
+overflow when a 64-bit floating point number was converted to a 16-bit signed integer. More tragically, 28 U.S.
+soldiers were killed in 1991 during the First Gulf War, when a Patriot missile in Saudi Arabia failed to intercept an
+Iraqi Scud missile. The error was traced to a loss of precision of time when tracking the Scud's velocity, as
+represented in the system clock's 24-bit register. Timing errors are particularly insidious. Faux and Godolphin
+(2021b) claim that rounding errors in quartz crystal stopwatches are theoretically capable of reversing the ranking of
+elite track or swimming athletes in a close race.
+
+What about statistical calculations? In a 2011 stackexchange post, user "whuber" stated that the smallest p-value
+that can be represented in IEEE 754 double precision arithmetic is $10^{-303}$. [A p-value that small might be
+considered a bit meaningless, because such a value is way smaller than $1/n$, where $n$ = the number of observable
+particles in the universe ($10^{80}$ ish).] More practically, versions of Microsoft Excel prior to 2003 had a notorious
+flaw when calculating the sample variance (and therefore standard deviation). As we all know, there are two
+convenient, mathematically equivalent ways of expressing the variance:
+
+$$ (n-1) Variance(x_i) = \sum_i (x_i - \bar{x})^2 = \sum_i x_i^2 - \frac{1}{n} (\sum_i x_i)^2 $$ 
+As Hans Pottel (2000) noted however, in floating point arithmetic, the first form is more numerically stable than the
+second. He stated that the second formula “has the property that it suffers from subtractive cancellation for data sets
+for which the mean...is large compared to the standard deviation” and that an error analysis of the second formula
+shows that it has about twice “the number of incorrect significant figures in the results” compared to the first
+formula. However, the old versions of Excel used the unstable second form, while Excel 2003 and later use the
+more reasonable first form. Pottel (2000) shows that it is extremely easy to demonstrate the floating point error in
+old Excel. He gives an example of varying data that (old) Excel claimed had a precisely zero standard deviation.
+The solution is to manually subtract the mean from all data prior to applying the standard deviation function.
+(Subtracting a constant has no mathematical effect on the variance, but apparently it has a substantial effect in
+floating point calculations, the way old Excel coded it.) Earlier this year, Microsoft (2021) admitted that the
+variance algorithm had been changed for later versions of Excel. They also claimed that differences in outputs from
+the two algorithms are “likely to occur only in extreme situations.”
+
+A personal anecdote. My very first “statistical consulting” project involved analyzing accelerator mass spectrometry
+measurements of Calcium-41 isotope in a study of bone resorption in a group of post-menopausal women. The
+technology was capable of measuring extremely small concentrations of this isotope in urine. Theory predicted the
+form of the highly nonlinear function that such data (calcium-41 to calcium-40 ratios on the order of $10^{-10}$) should
+follow over time (samples were collected over several weeks), but four fitting parameters had to be estimated
+empirically. I imported the data into SAS and tried to fit the model using the Levenberg-Marquardt algorithm.
+However, it would not converge. My statistics professor was baffled. However, I decided to “change the units of
+measurement”, ie, multiply all the $y$’s by $10^{10}$ to make them of order unity. SAS was now able to converge and
+estimate the fitting parameters. (The estimated parameters could then be re-expressed in the original units if desired.)
+I bet the SAS implementation of the iterative algorithm checked for convergence by comparing the reduction in sum
+of squared error with a default tolerance value, and thus could not handle $y$’s that may have been even smaller than
+that tolerance. The key was to not just think like a statistician, but think like a computer scientist too.
+
+
+Hough (2019) and Demmel & Riedy (2021) provide some discussion about the latest (2019) revision of the IEEE
+754 standard for floating point arithmetic. The standard was first issued in 1985. The 2008 revision included an
+interesting bug: the standard definitions of the Min and Max functions were not associative in the presence of “Not-a-numbers” (NaNs). The 2019 revision fixes this bug. Hough (2019) discusses the history of the IEEE 754 standard,
+while Demmel & Riedy (2021) focuses on the 2019 update as well as providing several examples of "epic fails".
+Faux & Godolphin (2021a) provide further examples of floating point failures from physics, astronomy, and
+computational science. (After reading these examples, I am not convinced that the “extreme situations” Microsoft
+spoke of necessarily implies “uncommon situations”.)
+
+It is anticipated that future floating point standards will need to explicitly accommodate machine learning and
+related computational tasks. Hough (2019) observes that such tasks "obtain greater accuracy by processing more
+data faster than by computing with more precision -- rather different constraints from those for traditional scientific
+computing. ... There might be arithmetic standards dedicated to very specific application areas, rather than
+compromises intended to be suitable for a wide range of diverse applications." Demmel & Riedy (2021) note that
+machine learning applications "benefit from a wider exponent range to represent smaller probabilities, thus leading
+to formats like Google's bfloat16 (with 7(+1) bits of precision, eight bits of exponent, and one sign bit)."
+I would applaud a more fit-for-purpose approach to floating point arithmetic standards, but this places the burden on
+us, as data scientists and statisticians, to specify how we want our floating point arithmetic to work. How many of
+us understand floating point arithmetic deeply enough to even begin to address that question!
+
+## Exercise for the reader
+
+Try the following simple calculations in your favorite spreadsheet or statistical software. Let $p$ = 769933891 (a
+randomly selected 10-digit prime number), a constant, and let $q = \{3, 5, 7\} \times 10^{-9}$. Let $k = p + q$. Calculate the
+standard deviation of $q$ and then calculate the standard deviation of $k$. Mathematically, these standard deviations
+should be identical, but in floating point arithmetic, you may get something quite different! I surmise that the title of
+a recent book by Hinch (2020) applies not only to fluid dynamics, but to statistics and data science, and any other
+field that involves computing.
+
+### Sources
+
+D. N. Arnold, 1998: [Some disasters attributable to bad numerical computing](https://www-users.cse.umn.edu/~arnold/disasters/) .
+
+J. Demmel & J. Riedy, 2021: [A new IEEE 754 Standard for floating-point arithmetic in an ever-changing world](https://www.siam.org/publications/siam-news/articles/a-new-ieee-754-standard-for-floating-point-arithmetic-in-an-ever-changing-world/).  *SIAM News*, 54 (6): 9-11.  
+
+D. A. Faux and J. Godolphin, 2021a: [The floating point: tales of the unexpected](https://doi.org/10.1119/10.0003915). *American Journal of Physics*, 89:
+806-814. 
+
+D. A. Faux and J. Godolphin, 2021b: [The floating point: rounding error in timing devices](https://doi.org/10.1119/10.0003919). *American Journal of
+Physics*, 89: 815-816. 
+
+E. J. Hinch, 2020: *Think Before You Compute: A Prelude to Computational Fluid Dynamics*. Cambridge University Press.
+
+D. G. Hough, 2019: [The IEEE Standard 754: one for the history books](https://doi.org/10.1109/MC.2019.2926614). *Computer*, 52 (12): 109-112.
+
+
+D. F. Mansfield & N. J. Wildberger, 2017: [Plimpton 322 is Babylonian exact sexagesimal trigonometry](https://doi.org/10.1016/j.hm.2017.08.001). *Historia
+Mathematica*, 44: 395-419. 
+
+Microsoft, 2021: [Differences between the Excel statistical functions STDEVPA and STDEVP](https://docs.microsoft.com/en-us/office/troubleshoot/excel/statistical-functions-differences).
+
+H. Pottel, 2000: [Statistical flaws in Excel](https://www.researchgate.net/publication/242587564_Statistical_flaws_in_Excel).
+
+"whuber", 2011: [Response to "Sanity check: how low can a p-value go?"](https://stats.stackexchange.com/questions/11812/sanity-check-how-low-can-a-p-value-go).
+
+### Provenance
+
+Originally published in the Fall 2021 issue of *Silver State-istics*, the newsletter of the Nevada Chapter of the American Statistical Association, vol. 18, no. 3, pp. 5-7.  Reprinted with permission, with the following disclaimer:  "All items appearing in *Silver-State-istics* are from the individuals providing them and are not intended in any way to represent positions or opinions of any employer, government agency, client, the Nevada Chapter of the ASA, or the national ASA."
